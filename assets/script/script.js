@@ -25,7 +25,7 @@ document.getElementsByClassName('card')[0].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[0].src;
         numSelectorTwo = 0;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -55,7 +55,7 @@ document.getElementsByClassName('card')[1].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[1].src;
         numSelectorTwo = 1;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -85,7 +85,7 @@ document.getElementsByClassName('card')[2].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[2].src;
         numSelectorTwo = 2;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -115,7 +115,7 @@ document.getElementsByClassName('card')[3].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[3].src;
         numSelectorTwo = 3;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -145,7 +145,7 @@ document.getElementsByClassName('card')[4].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[4].src;
         numSelectorTwo = 4;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -175,7 +175,7 @@ document.getElementsByClassName('card')[5].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[5].src;
         numSelectorTwo = 5;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -205,7 +205,7 @@ document.getElementsByClassName('card')[6].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[6].src;
         numSelectorTwo = 6;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -235,7 +235,7 @@ document.getElementsByClassName('card')[7].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[7].src;
         numSelectorTwo = 7;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -265,7 +265,7 @@ document.getElementsByClassName('card')[8].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[8].src;
         numSelectorTwo = 8;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -295,7 +295,7 @@ document.getElementsByClassName('card')[9].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[9].src;
         numSelectorTwo = 9;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -325,7 +325,7 @@ document.getElementsByClassName('card')[10].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[10].src;
         numSelectorTwo = 10;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
@@ -355,7 +355,7 @@ document.getElementsByClassName('card')[11].onclick = function click () {
         cardback.style.display = "none";
         imgTwo = document.getElementsByClassName('card__img')[11].src;
         numSelectorTwo =11;
-        if (imgOne === imgTwo) {
+        if (imgOne === imgTwo && numSelectorOne != numSelectorTwo) {
             setTimeout ( delBlock, 400, numSelectorOne, numSelectorTwo);
         }
     } else {
