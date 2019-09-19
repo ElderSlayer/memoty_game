@@ -1,4 +1,40 @@
 "use strict";
+//random block
+
+function randomInteger(min, max) {
+    let rand = Math.random() * (max + 1 - min) + min;
+    return Math.floor(rand);
+}
+
+function ranNumNoRepeat(arr) {
+    let ranNum;
+    ranNum = randomInteger(1, 6);
+    for ( let i = 0; i < 12; i++ ) {
+        if ( arr[i] === ranNum ) {
+            for (let j = 0; j < 12; j++) {
+                if (arr[j] === ranNum && i !== j) {
+                    return ranNumNoRepeat(arr);
+                }
+            }
+            return  ranNum;
+        }
+    }
+    return ranNum;
+}
+
+let ranNumArr = [];
+
+for ( let j = 0; j < 12; j++) {
+    ranNumArr[j] = ranNumNoRepeat(ranNumArr);
+}
+
+for ( let i = 0; i < 12; i++ ) {
+    let src;
+    src = "assets/img/card-" + ranNumArr[i] + ".png";
+    document.getElementsByClassName('card__img')[i].src = src;
+}
+
+//clock block
 
 let countClick = 0;
 let imgOne;
@@ -10,6 +46,7 @@ function delBlock (numSelectorOne, numSelectorTwo) {
     document.getElementsByClassName('card')[numSelectorOne].style.display = "none";
     document.getElementsByClassName('card')[numSelectorTwo].style.display = "none";
 }
+
 function clickCard (numSelector) {
     document.getElementsByClassName('card')[numSelector].onclick = function () {
     if (countClick === 0) {
