@@ -6,14 +6,16 @@ function randomInteger(min, max) {
     return Math.floor(rand);
 }
 
-function ranNumNoRepeat(arr) {
+function ranNumTwoRepeat(arr, amount) {
+    let max = amount / 2;
     let ranNum;
-    ranNum = randomInteger(1, 6);
-    for ( let i = 0; i < 12; i++ ) {
+    ranNum = randomInteger(1, max);
+
+    for ( let i = 0; i < amount; i++ ) {
         if ( arr[i] === ranNum ) {
-            for (let j = 0; j < 12; j++) {
+            for (let j = 0; j < amount; j++) {
                 if (arr[j] === ranNum && i !== j) {
-                    return ranNumNoRepeat(arr);
+                    return ranNumTwoRepeat(arr, amount);
                 }
             }
             return  ranNum;
@@ -22,25 +24,43 @@ function ranNumNoRepeat(arr) {
     return ranNum;
 }
 
-let ranNumArr = [];
+function addImgCard (amount) {
+    let ranNumArr = [];
 
-for ( let j = 0; j < 12; j++) {
-    ranNumArr[j] = ranNumNoRepeat(ranNumArr);
+    for ( let j = 0; j < amount; j++) {
+        ranNumArr[j] = ranNumTwoRepeat(ranNumArr, amount);
+    }
+
+    for ( let i = 0; i < 24; i++) {
+        document.getElementsByClassName('card')[i].style.display = "none";
+    }
+
+    for ( let i = 0; i < amount; i++ ) {
+        let src;
+        src = "assets/img/card-" + ranNumArr[i] + ".png";
+        document.getElementsByClassName('card__img')[i].src = src;
+        document.getElementsByClassName('card')[i].style.display = "block";
+        document.getElementsByClassName('cardback')[i].style.display = "block";
+    }
 }
 
-for ( let i = 0; i < 12; i++ ) {
-    let src;
-    src = "assets/img/card-" + ranNumArr[i] + ".png";
-    document.getElementsByClassName('card__img')[i].src = src;
+let amount = document.getElementById('amount').value;
+addImgCard(amount);
+
+document.getElementById('amount').onchange = function () {
+
+    let amount = document.getElementById('amount').value;
+    addImgCard(amount);
+};
+
+document.getElementById('refresh').onclick = function () {
+    let amount = document.getElementById('amount').value;
+    addImgCard(amount);
 }
+
+debugger;
 
 //clock block
-
-let countClick = 0;
-let imgOne;
-let imgTwo;
-let numSelectorOne;
-let numSelectorTwo;
 
 function delBlock (numSelectorOne, numSelectorTwo) {
     document.getElementsByClassName('card')[numSelectorOne].style.display = "none";
@@ -92,6 +112,13 @@ function clickCard (numSelector) {
     }
     };
 }
+
+let countClick = 0;
+let imgOne;
+let imgTwo;
+let numSelectorOne;
+let numSelectorTwo;
+
 clickCard (0);
 clickCard (1);
 clickCard (2);
@@ -104,3 +131,15 @@ clickCard (8);
 clickCard (9);
 clickCard (10);
 clickCard (11);
+clickCard (12);
+clickCard (13);
+clickCard (14);
+clickCard (15);
+clickCard (16);
+clickCard (17);
+clickCard (18);
+clickCard (19);
+clickCard (20);
+clickCard (21);
+clickCard (22);
+clickCard (23);
