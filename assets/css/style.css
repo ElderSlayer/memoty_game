@@ -29,13 +29,13 @@
     padding: 100px 60px;
 }
 .card {
-    display: none;
     margin: 15px;
-    width: 120px;
-    height: 180px;
+    width: 150px;
+    height: 225px;
     position: relative;
 }
-.cardback {
+.card__back {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
