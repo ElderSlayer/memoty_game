@@ -79,6 +79,7 @@ class Game {
 
 	addHtmlCards() {
 		this.cards.forEach( (e)=> {
+			let cardHtmlWrapper = document.createElement('div');
 			let cardHtml = document.createElement('div');
 			let imgCardBackHtml = document.createElement('img');
 			let imgCardMainHtml = document.createElement('img');
@@ -92,9 +93,13 @@ class Game {
 			cardHtml.className = 'card';
 			cardHtml.append(imgCardBackHtml, imgCardMainHtml);
 
-			e.cardHtml = cardHtml;
+			cardHtmlWrapper.className = 'card__wrapper';
 
-			this.field.append(cardHtml);
+			cardHtmlWrapper.append(cardHtml);
+
+			e.cardHtml = cardHtmlWrapper;
+
+			this.field.append(cardHtmlWrapper);
 		})
 	}
 
@@ -104,7 +109,6 @@ class Game {
 		this.addNameUrlCards();
 		this.addHtmlCards();
 		this.initializeEvents();
-		console.log(this);
 	}
 
 	initializeEvents() {
