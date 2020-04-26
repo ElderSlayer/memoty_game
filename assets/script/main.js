@@ -5,6 +5,22 @@ class Card {
 	url;
 	status = 'close';
 	cardHtml;
+
+	openCard() {
+		this.status = 'open';
+		this.cardHtml.classList.add('card--open');
+	}
+
+	closeCard() {
+		this.status = 'close';
+		this.cardHtml.classList.remove('card--open');
+	}
+
+	doneCard() {
+		this.status = 'done';
+		this.cardHtml.classList.remove('card--open');
+		this.cardHtml.classList.add('card--done');
+	}
 }
 
 class Game {
@@ -116,15 +132,13 @@ class Game {
 
 				switch (openCards.length) {
 					case 0:
-						e.status = 'open';
-						e.cardHtml.classList.add('card--open');
+						e.openCard();
 
 						openCards.push(e);
 
 						break;
 					case 1:
-						e.status = 'open';
-						e.cardHtml.classList.add('card--open');
+						e.openCard();
 
 						openCards.push(e);
 
@@ -132,9 +146,7 @@ class Game {
 							this.cards.forEach((e) => {
 								if (e.value === openCards[0].value) {
 									setTimeout(() => {
-										e.status = 'done';
-										e.cardHtml.classList.remove('card--open');
-										e.cardHtml.classList.add('card--done')
+										e.doneCard();
 									}, 400)
 
 								}
@@ -145,14 +157,12 @@ class Game {
 					case 2:
 						this.cards.forEach( (e) => {
 							if (e.status === 'open') {
-								e.status = 'close';
-								e.cardHtml.classList.remove('card--open');
+								e.closeCard();
 								return;
 							}
 						})
 
-						e.status = 'open';
-						e.cardHtml.classList.add('card--open');
+						e.openCard();
 
 						break;
 				}
@@ -162,4 +172,3 @@ class Game {
 }
 
 let newGame = new Game;
-// newGame.startGame();
