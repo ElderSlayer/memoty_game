@@ -1,31 +1,32 @@
 "use strict";
 
 class Card {
-
 	value;
 	url;
 	status = 'close';
-
+	cardHtml;
 }
 
 class Game {
-	amountHtml = document.querySelector('#amount');
-	amount = document.querySelector('#amount').value;
+	refresh = document.querySelector('#refresh');
+	amountSelector = document.querySelector('#amount');
+	field = document.querySelector('#field');
+	amount;
 	cards = [];
 
-	/*constructor() {
-		this.initializeEvents();
-	}*/
+	constructor() {
+		this.startGame();
+	}
 
 	getRandomInteger(min, max) {
 		let rand = Math.random() * (max + 1 - min) + min;
+
 		return Math.floor(rand);
 	}
 
 	getRandomNumberCard(arr, amount, key) {
 		let max = amount / 2;
-		let ranNum;
-		ranNum = this.getRandomInteger(1, max);
+		let ranNum = this.getRandomInteger(1, max);
 
 		for ( let i = 0; i < amount; i++ ) {
 			if ( arr[i][key] === ranNum ) {
@@ -40,7 +41,14 @@ class Game {
 		return ranNum;
 	}
 
+	init() {
+		this.field.innerHTML = '';
+		this.amount = document.querySelector('#amount').value;
+	}
+
 	createCards() {
+		this.cards.splice(0, this.cards.length);
+
 		for (let i = 0; i < this.amount; i++) {
 			this.cards.push(new Card);
 		}
@@ -54,8 +62,6 @@ class Game {
 	}
 
 	addHtmlCards() {
-		let field = document.querySelector('#field');
-
 		this.cards.forEach( (e)=> {
 			let cardHtml = document.createElement('div');
 			let imgCardBackHtml = document.createElement('img');
@@ -70,23 +76,90 @@ class Game {
 			cardHtml.className = 'card';
 			cardHtml.append(imgCardBackHtml, imgCardMainHtml);
 
-			field.append(cardHtml);
+			e.cardHtml = cardHtml;
+
+			this.field.append(cardHtml);
 		})
 	}
 
 	startGame() {
+		this.init();
 		this.createCards();
 		this.addNameUrlCards();
 		this.addHtmlCards();
+		this.initializeEvents();
 		console.log(this);
 	}
 
-	/*initializeEvents() {
-		this.amountHtml.addEventListener('change', () => {
-			console.log('test');
+	initializeEvents() {
+		this.refresh.addEventListener('click', () => {
+			this.startGame();
 		})
-	}*/
+
+		this.amountSelector.addEventListener('change', () => {
+			this.startGame();
+		})
+
+		this.cards.forEach( (e) => {
+			e.cardHtml.addEventListener('click', () => {
+				if (e.status === 'open') {
+					return;
+				}
+
+				let openCards = [];
+
+				this.cards.forEach( (e) => {
+					if (e.status === 'open') {
+						openCards.push(e);
+					}
+				})
+
+				switch (openCards.length) {
+					case 0:
+						e.status = 'open';
+						e.cardHtml.classList.add('card--open');
+
+						openCards.push(e);
+
+						break;
+					case 1:
+						e.status = 'open';
+						e.cardHtml.classList.add('card--open');
+
+						openCards.push(e);
+
+						if (openCards[0].value === openCards[1].value) {
+							this.cards.forEach((e) => {
+								if (e.value === openCards[0].value) {
+									setTimeout(() => {
+										e.status = 'done';
+										e.cardHtml.classList.remove('card--open');
+										e.cardHtml.classList.add('card--done')
+									}, 400)
+
+								}
+							})
+						}
+
+						break;
+					case 2:
+						this.cards.forEach( (e) => {
+							if (e.status === 'open') {
+								e.status = 'close';
+								e.cardHtml.classList.remove('card--open');
+								return;
+							}
+						})
+
+						e.status = 'open';
+						e.cardHtml.classList.add('card--open');
+
+						break;
+				}
+			})
+		})
+	}
 }
 
 let newGame = new Game;
-newGame.startGame();
+// newGame.startGame();
